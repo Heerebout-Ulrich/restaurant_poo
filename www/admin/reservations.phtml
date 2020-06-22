@@ -1,0 +1,27 @@
+<?php if($admin->is_admin() == false): ?>
+<?php header ('Location: index.php'); ?>
+<?php endif; ?>
+
+
+  <fieldset>
+    <legend><i class="fas fa-list"></i> Liste des Réservations</legend>
+ <table class="list-product">
+   <thead>
+        <tr>
+            <th>Date</th>
+            <th>Nom</th>
+            <th>Nombre de couvert</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>    
+
+<?php foreach($reservations as $reservation): ?>
+<tr>
+   	<td><?= $reservation['DATE'] ?> à <?= $reservation['HEURE'] ?></td>
+	<td><?= $reservation['nom'] ?> <?= $reservation['prenom'] ?></td>
+	<td><?= $reservation['nb_couverts'] ?></td>
+	<td><a href="index.php?action=supprimer_reservation&id=<?= $reservation['id'] ?>"><i class="far fa-trash-alt"></i></a></td>
+</tr>    
+    <?php endforeach; ?>
+</table>   
+  </fieldset>  

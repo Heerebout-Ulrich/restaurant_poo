@@ -1,0 +1,40 @@
+<?php if($admin->is_admin() == false): ?>
+<?php header ('Location: index.php'); ?>
+<?php endif; ?>
+
+
+<h2>Ajouter un produit</h2>
+
+
+<form id="register" action="index.php?action=ajouter_produit" method="POST" enctype="multipart/form-data">
+  <fieldset>
+    <legend><i class="fas fa-check"></i> Caractéristiques</legend>
+    <ul>
+        <li><label>Nom du produit</label>
+             <input type="text" name="name">
+        </li>
+        
+        <li><label>Description :</label>
+        <textarea name="description" rows="5" cols="33"></textarea>
+        </li>
+        
+       
+         <li>
+         <label>Image :</label>
+              <input type="file" id="" name="image" accept="image/png, image/jpeg">
+        </li>
+        </ul>
+  </fieldset>  
+ 
+  
+  
+  <fieldset>
+    <legend><i class="fas fa-retweet"></i> Approvisionnement</legend>
+   <ul> 
+     <li><label>Prix de vente</label>
+             <input type="number" name="prix" step = "any">
+        </li>
+        </ul>
+         <button type="submit">Ajouter</button><button class="cancel" type="reset">Reset</button>
+</form>
+</fieldset> 

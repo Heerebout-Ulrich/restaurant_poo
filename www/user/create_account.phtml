@@ -1,0 +1,68 @@
+<div class="form-connect">
+<form id="register" action="index.php?action=create" method="POST">
+  <fieldset>
+    <legend>Identité et coordonnées</legend>
+    <ul>
+        <li><label>Nom:</label>
+        <input type="text" name="nom"/></li>
+        
+         <li><label>Prenom:</label>
+        <input type="text" name="prenom"/></li>
+        
+         <li><label>Date de naissance:</label>
+            
+            <select name="jour">
+            <?php for($i=1;$i<=31;$i++){
+                          echo "<option value=".$i.">" .$i. "</option>";}
+            ?>
+            </select>/
+                 <select name="mois">
+                                <option value="01">Janvier</option>
+                                <option value="02">Février</option>
+                                <option value="03">Mars</option>
+                                <option value="04">Avril</option>
+                                <option value="05">Mai</option>
+                                <option value="06">Juin</option>
+                                <option value="07">Juillet</option>
+                                <option value="08">Août</option>
+                                <option value="09">Septembre</option>
+                                <option value="10">Octobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Décembre</option>
+            </select>/
+             <select name="annee">
+                     <?php for($i=2020;$i>=1920;$i--){
+                          echo "<option value=".$i.">" .$i. "</option>";}
+            ?>
+            </select></li>
+        
+         <li><label>Adresse:</label>
+        <textarea name="adresse" rows="5" cols="33"></textarea></li>
+        
+         <li><label>Ville:</label>
+        <input type="text" name="ville"/></li>
+        
+         <li><label>Code Postal:</label>
+        <input type="text" name="codep"/></li>
+        
+         <li><label>Pays:</label>
+        <input type="text" name="pays"/></li>
+        
+         <li><label>Telephone:</label>
+        <input type="text" name="telephone"/></li>
+     </ul>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Informations d'authentification</legend>
+    <ul>
+        <li><label>Email:</label>
+        <input type="text" name="mail"/></li>
+
+        <li><label>Mot de passe:</label>
+        <input type="text" name="password"/></li>
+    </ul>
+  </fieldset>  
+  <button type="submit">Envoyer</button>
+</form>
+</div>

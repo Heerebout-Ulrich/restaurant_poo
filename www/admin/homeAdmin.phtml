@@ -1,0 +1,35 @@
+<!--<?php $admin = new AdminController(); ?>-->
+
+ <?php if(!empty($msginfo)): ?>
+ <?= "<div class='msginfo'>".$msginfo."</div>" ?>
+ <?php endif; ?>
+
+<?php if($admin->is_admin() == false): ?>
+
+<div id="form-connect">
+    <!-- zone de connexion -->
+    
+    <form action="index.php?action=admin" method="POST">
+        <h1><i class="fas fa-lock"></i> Espace Administrateur</h1>
+        
+        <label><b><i class="far fa-envelope"></i>Email:</b></label>
+        <input type="text" placeholder="Entrer votre identifiant" name="mail" required>
+
+        <label><b><i class="fas fa-lock"></i>Mot de passe:</b></label>
+        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+
+        <input type="submit" id='submit' value='Se connecter' >
+        
+    </form>
+</div>
+
+<?php else: ?>
+<nav class="container nav_admin">
+<a class="logout" href="index.php?action=ajouter_produit"><i class="fas fa-plus-square animated bounce delay-2s"></i> Ajouter un produit</a>
+<a class="logout" href="index.php?action=editer_produit"><i class="fas fa-edit animated bounce delay-2s"></i></i> Modifier un produit</a>
+<a class="logout" href="index.php?action=affichage_reservation"><i class="fas fa-list animated bounce delay-2s"></i></i> Afficher la liste des réservations</a>
+<a class="logout" href="index.php?action=affichage_commandes"><i class="fas fa-list animated bounce delay-2s"></i> Afficher la liste des commandes</a>
+<a class="logout" href="index.php?action=affichage_utilisateurs"><i class="fas fa-users animated bounce delay-2s"></i>Liste des utilisateurs</a>
+</nav>
+</div>
+<?php endif; ?>

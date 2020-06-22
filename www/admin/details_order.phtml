@@ -1,0 +1,36 @@
+<?php if($admin->is_admin() == false): ?>
+<?php header ('Location: index.php'); ?>
+<?php endif; ?>
+
+  <fieldset>
+    <legend><i class="fas fa-list"></i> Détails de la commmande n°<?= $details_customer['id'] ?></legend>
+   <ul class="info-customer">
+      <li><?= $details_customer['nom'] ?> <?= $details_customer['prenom'] ?></li>      
+      <li><?= $details_customer['adresse'] ?></li>
+      <li><?= $details_customer['code_postal'] ?> <?= $details_customer['ville'] ?></li>
+      <li><?= $details_customer['tel'] ?></li>
+      <li><?= $details_customer['email'] ?></li>
+  </ul>
+ <table class="list-product">
+   <thead>
+        <tr>
+            <th>id article</th>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix Unitaire</th>
+            <th>Prix Total</th>
+        </tr>
+    </thead>    
+<?php foreach($details_commandes as $commande): ?>
+<tr>
+<td><?= $commande['id'] ?></td>
+   <td><?= $commande['name'] ?></td>
+	<td><?= $commande['quantite'] ?></td>
+	<td><?= $commande['prix_unit'] ?></td>
+	<td><?= $commande['prix_total'] ?></td>
+</tr>    
+    <?php endforeach; ?>
+    <tr>
+    <td></td> <td></td> <td></td> <td></td><td id="total"><strong>TOTAL : <?= $details_customer['prix_total'] ?> TTC</strong></td></tr>
+</table>   
+  </fieldset>  

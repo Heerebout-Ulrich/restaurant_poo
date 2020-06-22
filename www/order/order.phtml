@@ -1,0 +1,45 @@
+<?php if($user->is_connect() == false): ?>
+<?php header ('Location: index.php?action=connect'); ?>
+<?php endif; ?>
+
+<div class="section-title">
+        <h2>Passer une commande</h2>
+</div>
+
+<div class="container">
+  <fieldset id="add-article">
+    <legend>Ajouter un article</legend>
+<form id="add-shop">
+<section class="products_shop">
+<label>Nom</label>
+<select id="menu" name="produit">
+<!--<option value="0">Choisissez votre produit</option>-->
+ <?php foreach($liste as $plat): ?>
+   <option value="<?= $plat['id'] ?>" ><?= $plat['name'] ?></option>
+<?php endforeach; ?>
+     </select>
+    <div id="product_details">
+          <img src="">
+          <h3></h3>
+          <p></p>
+          <span class="price"></span>         
+    </div>
+    <labels class="quantity">Quantité</label>
+<input id="nquantity" class="quantity" type="number" name="quantity"/> <button type="button" id="ajouter">Ajouter</button>
+</form>
+</section>
+  </fieldset>  
+ 
+
+  <fieldset>
+    <legend>Récapitulatif de votre commande</legend>
+    <form id="affiche-panier">
+        <table id="panier">
+        
+
+        </table>
+  </fieldset>  
+  <button id="commander" type="button">Commander</button><button type="button" id="delete-card" class="cancel">Annuler</button>
+</form>
+</div>
+

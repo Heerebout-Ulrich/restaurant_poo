@@ -1,0 +1,68 @@
+<?php if($admin->is_admin() == false): ?>
+<?php header ('Location: index.php?action=admin'); ?>
+<?php endif; ?>
+
+<?php if(!empty($_GET['id'])): ?>
+<h2>Editer un produit</h2>
+<form id="register" action="index.php?action=editer_produit&id=<?= $meal['id'] ?>" method="POST" enctype="multipart/form-data">
+  <fieldset>
+    <legend><i class="fas fa-check"></i> Caractéristiques</legend>
+    <ul>
+        <li><label>Nom du produit</label>
+             <input value="<?= $meal['name'] ?>" type="text" name="name" required>
+        </li>
+        
+        <li><label>Description :</label>
+        <textarea name="description" rows="5" cols="33"><?= $meal['description'] ?></textarea>
+        </li>     
+         <li>
+         <label>Image :</label>
+         <input  type="file" id="" name="image" accept="image/png, image/jpeg">
+         <input name="image_default" type="hidden" value="<?= $meal['photo'] ?>">
+        </li>
+        </ul>
+  </fieldset>  
+  
+  <fieldset>
+    <legend><i class="fas fa-retweet"></i> Approvisionnement</legend>
+   <ul> 
+     <li><label>Prix de vente</label>
+             <input value="<?= $meal['prix'] ?>" type="text" name="prix" required>
+        </li>
+        </ul>
+         <button type="submit">Modifier</button><button class="cancel" type="reset">Reset</button>
+</form>
+
+<?php elseif(empty($_GET['id'])): ?>
+<form id="register" action="index.php?action=editer_produit" method="POST" enctype="multipart/form-data">
+  <fieldset>
+    <legend><i class="fas fa-list"></i> Liste des produits</legend>
+ <table class="list-product">
+   <thead>
+        <tr>
+            <th>Image</th>
+            <th>Titre</th>
+            <th>Descriptions</th>
+            <th>Prix</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>    
+
+<?php foreach($meals as $meal): ?>
+<tr>
+    <td><img width="50px" height="50px" src='www/images/<?= $meal['photo'] ?>'></td>
+   	<td><?= $meal['name'] ?></td>
+	<td><?= $meal['description'] ?></td>
+	<td><?= $meal['prix2']."€" ?></td>
+	<td><a href="index.php?action=editer_produit&id=<?= $meal['id'] ?>"><i class="fas fa-edit"></i></td>
+	<td><a href="index.php?action=supprimer_produit&id=<?= $meal['id'] ?>"><i class="far fa-trash-alt"></i></a></td>
+    </article>
+</tr>    
+    <?php endforeach; ?>
+</table>   
+  </fieldset>  
+
+</form>
+
+<?php endif; ?>

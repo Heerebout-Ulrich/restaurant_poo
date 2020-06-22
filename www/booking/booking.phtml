@@ -1,0 +1,28 @@
+
+
+<?php if($user->is_connect() == false): ?>
+<?php header ('Location: index.php?action=connect'); ?>
+<?php endif; ?>
+
+<div class="section-title">
+        <h2>Réserver une table</h2>
+</div>
+
+<div class="container">
+<form action="index.php?action=booking" method="POST">
+  <fieldset>
+    <legend>Informations</legend>
+
+        <p><label>Date de réservation :</label>
+
+<input type="date" name="date" min="<?= date("d-m-Y") ?>" max="2025-12-31">
+        <label>a</label>
+        
+        <input type="time" name="heure"
+       min="09:00" max="23:00">
+            <label>Nombre de couvert :</label>
+        <input type="number" name="nb_couvert" min="1" max="10"/>
+  </fieldset>  
+  <button type="submit">Réserver</button> <button class="cancel">Annuler</button>
+</form>
+</div>

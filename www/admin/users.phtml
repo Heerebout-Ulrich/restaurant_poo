@@ -1,0 +1,27 @@
+<?php if($admin->is_admin() == false): ?>
+<?php header ('Location: index.php'); ?>
+<?php endif; ?>
+
+
+  <fieldset>
+    <legend><i class="fas fa-list"></i> Liste des Utilisateurs</legend>
+ <table class="list-product">
+   <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>    
+
+<?php foreach($users as $user): ?>
+<tr>
+   	<td><?= $user['nom'] ?></td>
+	<td><?= $user['prenom'] ?></td>
+	<td><?= $user['email'] ?></td>
+	<td><a href="index.php?action=affichage_utilisateurs&delete_utilisateur=<?= $user['id'] ?>"><i class="far fa-trash-alt"></i></a></td>
+</tr>    
+    <?php endforeach; ?>
+</table>   
+  </fieldset>  

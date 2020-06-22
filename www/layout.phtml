@@ -1,0 +1,69 @@
+<?php $user = new UserController(); ?>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
+    <link rel="stylesheet" href="www/css/style.css" type="text/css" />
+</head>
+<body>
+<header>
+<div class="top-header">
+    <div class="social-links">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-google-plus"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>                          
+    </div>
+</div>
+<div class="head">
+<a href="index.php"><img src="www/images/logo-restaurant.png" alt="logo restaurant"></a>
+
+<?php if($user->is_connect() == true): ?>
+<nav class="container animated bounceIn delay-1s">
+<a class="logout" href="index.php?action=booking"><i class="fas fa-sign-out-alt"></i> Réserver</a>
+<a class="logout" href="index.php?action=order"><i class="fas fa-cart-arrow-down"></i> Commander</a>
+<a class="logout cancel" href="index.php?action=deconnect"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+</nav>
+</div>
+
+<span>Bonjour <strong><?= $_SESSION['user']['nom']." ". $_SESSION['user']['prenom'] ?></strong>!</span>
+
+<?php else: ?>
+
+<nav class="container animated zoomInDown delay-1s">
+<a href="index.php?action=create">Creer un compte</a>
+<a href="index.php?action=connect">Connexion</a>
+</nav>
+</div>
+
+<?php endif; ?>
+
+</header>   
+<main class="container">
+
+ <?php if(!empty($msginfo)): ?>
+ <?= "<span class='msginfo'>".$msginfo."</span>" ?>
+ <?php elseif(!empty($msgsucess)): ?>
+ <?= "<span class='msgsucces'>".$msgsucess."</span>" ?>
+ <?php endif; ?>
+<?php require $template ?>
+</main>
+<footer class="container">
+    <div class="logo cert container"> 
+        <img width="60px" height="60px" src="www/images/mastercard.png" alt="logo mastercard">
+        <img width="60px" height="60px" src="www/images/visa.png" alt="logo visa">
+        <img width="60px" height="60px" src="www/images/paypal.png" alt="logo paypal">
+    </div>
+    </span>Réalisé avec <i class="fas fa-heart"></i> par Heerebout Ulrich éleve de la 3W academy 2019-2020</span>
+</footer>
+<script src="www/js/valid_action_commande.js"></script>
+</body>
+</html>

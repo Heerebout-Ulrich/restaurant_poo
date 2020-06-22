@@ -1,0 +1,62 @@
+<?php $admin = new AdminController(); ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="www/css/style.css" type="text/css" />
+      <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+</head>
+<body>
+<header>
+<div class="top-header">
+    <div class="social-links">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-google-plus"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>                          
+    </div>
+</div>
+        <div class="head">
+        <a href="index.php"><img src="www/images/logo-restaurant.png" alt="logo restaurant"></a>
+        
+        <?php if($admin->is_admin() == true): ?>
+        <nav class="container animated zoomInDown delay-1s">
+        
+        <a class="" href="index.php?action=admin">Tableau de bord</a>
+        <a class="cancel" href="index.php?action=deconnectadmin">Deconnexion</a>
+        </nav>
+        </div>
+        
+        <?php endif; ?>
+</header>   
+<main class="container">
+ <?php if(!empty($msginfo)): ?>
+ <?= "<span class='msginfo'>".$msginfo."</span>" ?>
+ <?php elseif(!empty($msgsucess)): ?>
+ <?= "<span class='msgsucces'>".$msgsucess."</span>" ?>
+ <?php endif; ?> 
+<?php require $template ?>
+</main>
+<footer class="container">
+<div class="logo cert container"> 
+<img width="60px" height="60px" src="www/images/mastercard.png" alt="logo mastercard">
+<img width="60px" height="60px" src="www/images/visa.png" alt="logo visa">
+<img width="60px" height="60px" src="www/images/paypal.png" alt="logo paypal">
+</div>
+</span>Réalisé avec <i class="fas fa-heart"></i> par les éleves de la 3W academy</span>
+</footer>
+<script src="www/js/valid_action_commande.js"></script>
+</body>
+</html>
